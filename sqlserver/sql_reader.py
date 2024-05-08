@@ -1,30 +1,33 @@
-"""
-Created on Mon Mar 8 16:42:31 2021
-@author: joe.cavarretta
-"""
 import pandas as pd
 import pyodbc
 from datetime import datetime
 
+DRIVER = ''
+SERVER = ''
+DATABASE = ''
+SQL_FILE = ''
+OUT_FILE = ''
+
+
 def main():
     conn = connect_to_db()
-    df = readSQL('sql_file_name_here.sql', conn)
-    df.to_csv('file_name_here.csv', index = False)
-    print('Data saved to CSV!')
+    df = sql_to_dataframe(SQL_FILE, conn)
+    df.to_csv(OUT_FILE, index=False)
+    print('Data saved to csv!')
 
 
 def connect_to_db():
     conn = pyodbc.connect(
-        'DRIVER={SQL Server};'
-        'SERVER=;'
-        'DATABASE=;'
+        f'DRIVER={DRIVER};'
+        f'SERVER={SERVER};'
+        f'DATABASE={DATABASE};'
         'Trusted_Connection=yes;'
     )
     print(conn)
     return conn
 
 
-def readSQL(file_path, connection):
+def sql_to_dataframe(file_path, connection):
     with open(file_path) as fp:
         sql = fp.read()
         startTime = datetime.now()
