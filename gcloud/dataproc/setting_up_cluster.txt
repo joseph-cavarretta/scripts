@@ -1,0 +1,23 @@
+1. Open navigation menu in dataproc
+2. Click CREATE CLUSTER
+3. Set up cluster:
+    a. cluster name: joe-test-cluster
+    b. location: us-central1
+    c. cluster type: Standard (1 master, n workers)
+    d. versioning: choose a version depending on requirements
+    e. component gateway: enable component gateway
+4. Configure nodes:
+    a. machine type: n1-standard-2
+    b. primary disk size: 30 GB
+5. Worker nodes:
+    a. machine type: n1-standard-2
+    b. primary disk size: 30 GB
+    
+To Access HDFS from Hadoop Node Shell:
+1. Go to dataproc console and click cluster name
+2. On cluster details page, find VM INSTANCES tab
+3. Find VM Instance labelled master role node VM
+4. Click on SSH button
+5. Command line will appear
+
+hdfs dfs -ls ../
