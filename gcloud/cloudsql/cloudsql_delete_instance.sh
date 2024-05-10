@@ -1,0 +1,1 @@
+gcloud sql instances delete mysql-instance
