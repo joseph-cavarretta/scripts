@@ -20,7 +20,6 @@ def insert_values(db, table, rows):
     with sqlite3.connect(db) as conn:
         cursor = conn.cursor()
         for row in rows:
-            print(row)
             cursor.executemany(sql, row)
         conn.commit()
         print(f'{cursor.rowcount} rows inserted')
