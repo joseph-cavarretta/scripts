@@ -5,10 +5,11 @@ from google.cloud import pubsub_v1
 from random import randint
 from random import choice
 
+
 PROJECT_ID = "test-project"
 TOPIC_ID = "strava_activities"
 
-# init Publisher Client
+
 publisher = pubsub_v1.PublisherClient()
 # set publisher path to project and topic id
 topic_path = publisher.topic_path(PROJECT_ID, TOPIC_ID)
@@ -24,8 +25,9 @@ def get_callback(publish_future, data):
 
     return callback
 
+
 def create_random_message():
-    id_ = randint(10000,99999)
+    id_ = randint(10000, 99999)
     start_date_local = str(datetime.utcnow())
     type_ = choice(['Run', 'Ride', 'WeightTraining', 'BackcountrySki'])
 
@@ -35,6 +37,7 @@ def create_random_message():
             'type': type_
             }
     return message_json
+
 
 if __name__ == '__main__':
     for i in range(10):
