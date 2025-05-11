@@ -10,10 +10,10 @@ OUT_FILE = ''
 
 
 def main():
-    conn = connect_to_db()
-    df = sql_to_dataframe(SQL_FILE, conn)
-    df.to_csv(OUT_FILE, index=False)
-    print('Data saved to csv!')
+    with connect_to_db() as conn:
+        df = sql_to_dataframe(SQL_FILE, conn)
+        df.to_csv(OUT_FILE, index=False)
+        print('Data saved to csv!')
 
 
 def connect_to_db():
